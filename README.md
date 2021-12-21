@@ -7,7 +7,7 @@ Its popularity made the game one of the classics.
 
 I chose this game for my robotics project because it was one of my favourites growing up and I played it so much in my attempt to kill the boredom in school.
 
-How to play:
+## How to play
 
 Tetris is primarily composed of a field of play in which pieces of different geometric forms, called "tetriminos", descend from the top of the field. 
 
