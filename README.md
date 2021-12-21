@@ -45,4 +45,6 @@ Also, the higher you choose the difficulty, the faster the pieces will fall, but
 
 ## Setup
 
+![setup](https://github.com/alexandraburu23/Tetris-Game-Project/blob/main/setup.jpg)
+
 ## Demo
