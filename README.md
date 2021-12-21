@@ -25,6 +25,8 @@ The game never ends with the player's victory; the player can only complete as m
 
 My version of the game grants the player 3 lives at the start of the game and the score is calculated adding all the points won in those 3 lives.
 
+Also, the higher you choose the difficulty, the faster the pieces will fall, but you can win more points this way.
+
 
 
 ## Components
