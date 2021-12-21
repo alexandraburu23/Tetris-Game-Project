@@ -49,4 +49,4 @@ Also, the higher you choose the difficulty, the faster the pieces will fall, but
 
 ## Demo
 
-![demo](https://drive.google.com/file/d/1FP7AEnCBzxuFjnsAiDPh-IIQVWkuzQiu/view?usp=drivesdk)
+Here you can see the [demo](https://drive.google.com/file/d/1FP7AEnCBzxuFjnsAiDPh-IIQVWkuzQiu/view?usp=drivesdk) .
