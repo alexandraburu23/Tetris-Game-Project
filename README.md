@@ -123,5 +123,15 @@ The thought behind the code architecture was to have a division in modules. That
 
 ```assignMatrix()``` - this function is used to assign the piece to the matrix of values that is used later to calculate the scores and limits
 
-```limitLeft()```, ```limitCenter()```, ```limitRight()``` - these functions calculate the lowest point in the left column, center column and also the right column of the piece; this limits help us determine when the piece has hit the bottom or another piece 
+```limitLeft(String piece[3])```, ```limitCenter(String piece[3])```, ```limitRight(String piece[3])``` - these functions calculate the lowest point in the left column, center column and also the right column of the piece; these limits help us determine when the piece has hit the bottom or another piece 
+
+```borderRight(String piece[3])```, ```borderLeft(String piece[3])``` - these functions calculate the point of the piece that is the furthest to the right or to the left, these limits help us determine how much we can move the piece left or right
+
+```initializeGame()``` - this function is executing the first steps before the fall of the piece, a random piece is chosen and saved from the list, also the limits have been determined
+
+```matrixGame()``` - this function is, in fact, managing the game; the game can be played as long as there are lives left; the matrix of values is displayed in the LED matrix, in case there have been pieces placed previosly; with the help of the joystick, a piece can be moved left, right or down, in addition of the fact that the pieces fall one position at a certain period of time; when the button of the joystick is pressed, the piece is rotated; when the piece has hit the bottom or the pieces previously placed on the matrix, a ```stopSignal``` value becomes true, which means a new piece is prepared to fall; everytime a piece stops, we are counting if there are fully completed lines; if that's the case, the score increases and the line in question disappeares; there could be multiple lines completed at the same time; a life is lost when the pieces reach the first row; the matrix is erased between rounds; when all the lives have been lost, a new animation is shown on the LED matrix and the game displayes two exit screens
+
+```displayExitScreen1(int score)``` - this function is used for the first exit screen, that displayes a congratulatory message with the no. of points awarded to the player; the screen is exited when the joystick button is pressed
+
+```displayExitScreen2(int score)``` - this function is used for the second exit screen, that displayes the score and a message that lets the player know if he beat the first highscore; the screen is exited when the joystick button is pressed
 
