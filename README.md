@@ -75,4 +75,6 @@ The thought behind the code architecture was to have a division in modules. That
 
 ```loop()``` - the first thing that is displayed is the start-up message, after which we can select the menu option (calling the menu-displaying function and using a variable called ```selected```)
 
-```updateJoystick()``` - this function is updating the ```option``` value when scrolling through the menu, ```option``` has values between 0 and 3
+```updateJoystick()``` - this function is updating the ```counter``` value when scrolling through the menu, ```counter``` has values between 0 and 3
+
+```displayLCD()``` - this function is the one that helps us display the right thing on the LCD; if ```selected``` is false, then we have the flexibility to scroll through the menu with the help of ```displayMenu()``` to show the right text, if ```selected``` is true, then we entered a sub-category of the menu and we have to display the right one (START-GAME - ```displayGame()```, HIGHSCORE - ```displayHighscore()```, SETTINGS - ```displaySettings()```, ABOUT - ```displayAbout()```)
