@@ -27,6 +27,22 @@ My version of the game grants the player 3 lives at the start of the game and th
 
 Also, the higher you choose the difficulty, the faster the pieces will fall, but you can win more points this way.
 
+## How to use the menu
+
+When you power-up the board, a starting message will appear for a few seconds and then you can scroll through the menu.
+
+Menu Options: 
+
+* Start Game - will start the game with the settings you selected previously
+* Highscore - will display top 3 scores of all times with the names of the players that received them
+* Settings - here you have more options 
+  - Show name - displays the name of the current player
+  - Edit name - modifies the name of the current player - the user is able to choose a 4-character name 
+  - Set difficulty - the player can choose the difficulty level for the game (values between 1 and 5)
+  - Set LCD bright - the player can change the brightness of the LCD, which will be saved in EEPROM (values between 0 and 255)
+  - Set LCD contrast - the player can change the contrast of the LCD, which will be saved in EEPROM (values between 0 and 255)
+  - Set matrix light - the player can change the brightness of the LED matrix, which will be saved in EEPROM (values between 1 and 16)
+* About - will display the name of the game, the author and a link to this repository
 
 
 ## Components
