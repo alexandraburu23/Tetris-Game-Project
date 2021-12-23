@@ -71,67 +71,67 @@ Here you can see the [demo](https://drive.google.com/file/d/1FP7AEnCBzxuFjnsAiDP
 
 The thought behind the code architecture was to have a division in modules. That's why ```setup()``` and ```loop()``` are short functions.
 
-```setup()``` - pinMode declaration and initializing of the contrast and brightness values, and also initializing the game before playing
+```setup()``` - pinMode declaration and initializing of the contrast and brightness values, and also initializing the game before playing.
 
-```loop()``` - the first thing that is displayed is the start-up message, after which we can select the menu option (calling the menu-displaying function and using a variable called ```selected```)
+```loop()``` - the first thing that is displayed is the start-up message, after which we can select the menu option (calling the menu-displaying function and using a variable called ```selected```).
 
-```updateJoystick(int counter)``` - this function is updating the ```counter``` value when scrolling through the menu, ```counter``` has values between 0 and 3
+```updateJoystick(int counter)``` - this function is updating the ```counter``` value when scrolling through the menu, ```counter``` has values between 0 and 3.
 
-```displayLCD(int menu)``` - this function is the one that helps us display the right thing on the LCD; if ```selected``` is false, then we have the flexibility to scroll through the menu with the help of ```displayMenu()``` to show the right text, if ```selected``` is true, then we entered a sub-category of the menu and we have to display the right one (START-GAME - ```displayGame()```, HIGHSCORE - ```displayHighscore()```, SETTINGS - ```displaySettings()```, ABOUT - ```displayAbout()```)
+```displayLCD(int menu)``` - this function is the one that helps us display the right thing on the LCD; if ```selected``` is false, then we have the flexibility to scroll through the menu with the help of ```displayMenu()``` to show the right text, if ```selected``` is true, then we entered a sub-category of the menu and we have to display the right one (START-GAME - ```displayGame()```, HIGHSCORE - ```displayHighscore()```, SETTINGS - ```displaySettings()```, ABOUT - ```displayAbout()```).
 
-```displayMenu(int menu)``` - this function contains a switch-case block that helps the display of the right text of the menu option, before selecting a sub-category
+```displayMenu(int menu)``` - this function contains a switch-case block that helps the display of the right text of the menu option, before selecting a sub-category.
 
-```writeStringToEEPROM(int addrOffset, const String &strToWrite)``` - this function frees the space of the address and saves a new string in that place
+```writeStringToEEPROM(int addrOffset, const String &strToWrite)``` - this function frees the space of the address and saves a new string in that place.
 
-```readStringFromEEPROM(int addrOffset)``` - this function reads the string saved at the address
+```readStringFromEEPROM(int addrOffset)``` - this function reads the string saved at the address.
 
-```setDifficultyLevel(int startingDifficultyValue)``` - this function changes the speed at which the tetris pieces fall and the amount of points won by the player when he completes a full line, all of these depending on the difficulting level that was set in the Settings menu
+```setDifficultyLevel(int startingDifficultyValue)``` - this function changes the speed at which the tetris pieces fall and the amount of points won by the player when he completes a full line, all of these depending on the difficulting level that was set in the Settings menu.
 
-```changeLCD(bool changed)``` - this function is called to clear the LCD screen when the ```changed``` variable is True
+```changeLCD(bool changed)``` - this function is called to clear the LCD screen when the ```changed``` variable is True.
 
-```displayHighscore()``` - this function is used for displaying the Highscore sub-category; a new animation is lit on the LED matrix, the names and scored for top 3 are read from EEPROM and displayed; the joystick scroll is made on Oy axis; when we want to go back to the main menu, we push the joystick button
+```displayHighscore()``` - this function is used for displaying the Highscore sub-category; a new animation is lit on the LED matrix, the names and scored for top 3 are read from EEPROM and displayed; the joystick scroll is made on Oy axis; when we want to go back to the main menu, we push the joystick button.
 
-```displaySettings()``` - this function is used for displaying the Settings sub-category 
-  - a new animation is lit on the LED matrix
-  - moving the joystick on the Oy axis is scrolling through the Settings option, that are displayed in a switch case block
-  - before displaying the selected option in Settings, the current name of the player is read from EEPROM and edited to leave out any weird characters
-    - Case 0 - Show name - displaying current player name; exiting to the main menu when joystick button is pressed
-    - Case 1 - Edit name - displaying current player name and editing it; Oy joystick movement - scrolling through the name characters left or right; Ox joystick movement - scrolling through the alphabet characters up or down (A-Z), exiting to the main menu when joystick button is pressed
-    - Case 2 - Set difficulty level - Oy joystick movement - modifying the ```startingDifficultyLevel``` with values between 1 and 5; calling the ```setDifficultyLevel``` function to make the game changes; exiting to the main menu when joystick button is pressed
+```displaySettings()``` - this function is used for displaying the Settings sub-category; 
+  - a new animation is lit on the LED matrix;
+  - moving the joystick on the Oy axis is scrolling through the Settings option, that are displayed in a switch case block;
+  - before displaying the selected option in Settings, the current name of the player is read from EEPROM and edited to leave out any weird characters;
+    - Case 0 - Show name - displaying current player name; exiting to the main menu when joystick button is pressed;
+    - Case 1 - Edit name - displaying current player name and editing it; Oy joystick movement - scrolling through the name characters left or right; Ox joystick movement - scrolling through the alphabet characters up or down (A-Z), exiting to the main menu when joystick button is pressed;
+    - Case 2 - Set difficulty level - Oy joystick movement - modifying the ```startingDifficultyLevel``` with values between 1 and 5; calling the ```setDifficultyLevel``` function to make the game changes; exiting to the main menu when joystick button is pressed;
     - Case 3 - Set LCD bright - Oy joystick movement - modifying ```LCDBrightness``` value (0 - 255); changing the brightness of the LCD with this value; saving this value in EEPROM; diplaying the value on the screen; exiting to the main menu when joystick button is pressed
-    - Case 4 - Set LCD contrast - Oy joystick movement - modifying ```LCDContrast``` value (0 - 255); changing the contrast of the LCD with this value; saving this value in EEPROM; diplaying the value on the screen; exiting to the main menu when joystick button is pressed
-    - Case 5 - Set matrix light - Oy joystick movement - modifying ```matrixBrightness``` value (1 - 16); changing the brightness of the LED matrix with this value; saving this value in EEPROM; diplaying the value on the screen; exiting to the main menu when joystick button is pressed
+    - Case 4 - Set LCD contrast - Oy joystick movement - modifying ```LCDContrast``` value (0 - 255); changing the contrast of the LCD with this value; saving this value in EEPROM; diplaying the value on the screen; exiting to the main menu when joystick button is pressed;
+    - Case 5 - Set matrix light - Oy joystick movement - modifying ```matrixBrightness``` value (1 - 16); changing the brightness of the LED matrix with this value; saving this value in EEPROM; diplaying the value on the screen; exiting to the main menu when joystick button is pressed.
  
-```displayAbout()``` - this function is used for displaying the About sub-category; a new animation is lit on the LED matrix, moving the joystick on the Oy axis is scrolling through the About information; exiting to the main menu when the joystick button is pressed
-  - Case 0 - Game name 
-  - Case 1 - Author name
-  - Case 2 - Github link
+```displayAbout()``` - this function is used for displaying the About sub-category; a new animation is lit on the LED matrix, moving the joystick on the Oy axis is scrolling through the About information; exiting to the main menu when the joystick button is pressed;
+  - Case 0 - Game name;
+  - Case 1 - Author name;
+  - Case 2 - Github link.
 
-```displayGame()``` - this function is used for displaying the Game sub-category; top 3 scores and names are read from EEPROM before the start of the game; no. of lives, score and difficulty level are written on the LCD; the game starts when we call the function ```matrixGame()``` that returns the value of the new score; this value is compared with the top 3 scores and included in the ranking if it is the case
+```displayGame()``` - this function is used for displaying the Game sub-category; top 3 scores and names are read from EEPROM before the start of the game; no. of lives, score and difficulty level are written on the LCD; the game starts when we call the function ```matrixGame()``` that returns the value of the new score; this value is compared with the top 3 scores and included in the ranking if it is the case.
 
-```loseLife()``` - this function is called when the player loses a life in the game; no. of lives is decreased, the position of the piece is the initial one in the center of the first line, a specific tone is played by the buzzer and on the matrix is drawn a big X symbol
+```loseLife()``` - this function is called when the player loses a life in the game; no. of lives is decreased, the position of the piece is the initial one in the center of the first line, a specific tone is played by the buzzer and on the matrix is drawn a big X symbol.
 
-```winPoints()``` - this function is used to display the values of no. of lives, score and difficulty after a new score has been calculated
+```winPoints()``` - this function is used to display the values of no. of lives, score and difficulty after a new score has been calculated.
 
-```randomizePiece()``` - this function returns a random number that will represent the piece that will fall next in the game
+```randomizePiece()``` - this function returns a random number that will represent the piece that will fall next in the game.
 
-```erasePiece(int prevX, int prevY, String piece[3])``` - this function is used to erase the previous position of the piece
+```erasePiece(int prevX, int prevY, String piece[3])``` - this function is used to erase the previous position of the piece.
 
-```showPiece(int posX, int posY, String piece[3])``` - this function is used to display the current position of the piece
+```showPiece(int posX, int posY, String piece[3])``` - this function is used to display the current position of the piece.
 
-```rotatePiece(int posX, int posY, String piece[3])``` - this function is used to rotate the piece counter clockwise
+```rotatePiece(int posX, int posY, String piece[3])``` - this function is used to rotate the piece counter clockwise.
 
-```assignMatrix()``` - this function is used to assign the piece to the matrix of values that is used later to calculate the scores and limits
+```assignMatrix()``` - this function is used to assign the piece to the matrix of values that is used later to calculate the scores and limits.
 
-```limitLeft(String piece[3])```, ```limitCenter(String piece[3])```, ```limitRight(String piece[3])``` - these functions calculate the lowest point in the left column, center column and also the right column of the piece; these limits help us determine when the piece has hit the bottom or another piece 
+```limitLeft(String piece[3])```, ```limitCenter(String piece[3])```, ```limitRight(String piece[3])``` - these functions calculate the lowest point in the left column, center column and also the right column of the piece; these limits help us determine when the piece has hit the bottom or another piece.
 
-```borderRight(String piece[3])```, ```borderLeft(String piece[3])``` - these functions calculate the point of the piece that is the furthest to the right or to the left, these limits help us determine how much we can move the piece left or right
+```borderRight(String piece[3])```, ```borderLeft(String piece[3])``` - these functions calculate the point of the piece that is the furthest to the right or to the left, these limits help us determine how much we can move the piece left or right.
 
-```initializeGame()``` - this function is executing the first steps before the fall of the piece, a random piece is chosen and saved from the list, also the limits have been determined
+```initializeGame()``` - this function is executing the first steps before the fall of the piece, a random piece is chosen and saved from the list, also the limits have been determined.
 
-```matrixGame()``` - this function is, in fact, managing the game; the game can be played as long as there are lives left; the matrix of values is displayed in the LED matrix, in case there have been pieces placed previosly; with the help of the joystick, a piece can be moved left, right or down, in addition of the fact that the pieces fall one position at a certain period of time; when the button of the joystick is pressed, the piece is rotated; when the piece has hit the bottom or the pieces previously placed on the matrix, a ```stopSignal``` value becomes true, which means a new piece is prepared to fall; everytime a piece stops, we are counting if there are fully completed lines; if that's the case, the score increases and the line in question disappeares; there could be multiple lines completed at the same time; a life is lost when the pieces reach the first row; the matrix is erased between rounds; when all the lives have been lost, a new animation is shown on the LED matrix and the game displayes two exit screens
+```matrixGame()``` - this function is, in fact, managing the game; the game can be played as long as there are lives left; the matrix of values is displayed in the LED matrix, in case there have been pieces placed previosly; with the help of the joystick, a piece can be moved left, right or down, in addition of the fact that the pieces fall one position at a certain period of time; when the button of the joystick is pressed, the piece is rotated; when the piece has hit the bottom or the pieces previously placed on the matrix, a ```stopSignal``` value becomes true, which means a new piece is prepared to fall; everytime a piece stops, we are counting if there are fully completed lines; if that's the case, the score increases and the line in question disappeares; there could be multiple lines completed at the same time; a life is lost when the pieces reach the first row; the matrix is erased between rounds; when all the lives have been lost, a new animation is shown on the LED matrix and the game displayes two exit screens.
 
-```displayExitScreen1(int score)``` - this function is used for the first exit screen, that displayes a congratulatory message with the no. of points awarded to the player; the screen is exited when the joystick button is pressed
+```displayExitScreen1(int score)``` - this function is used for the first exit screen, that displayes a congratulatory message with the no. of points awarded to the player; the screen is exited when the joystick button is pressed.
 
-```displayExitScreen2(int score)``` - this function is used for the second exit screen, that displayes the score and a message that lets the player know if he beat the first highscore; the screen is exited when the joystick button is pressed
+```displayExitScreen2(int score)``` - this function is used for the second exit screen, that displayes the score and a message that lets the player know if he beat the first highscore; the screen is exited when the joystick button is pressed.
 
