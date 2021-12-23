@@ -102,3 +102,7 @@ The thought behind the code architecture was to have a division in modules. That
     - Case 4 - Set LCD contrast - Oy joystick movement - modifying ```LCDContrast``` value (0 - 255); changing the contrast of the LCD with this value; saving this value in EEPROM; diplaying the value on the screen; exiting to the main menu when joystick button is pressed
     - Case 5 - Set matrix light - Oy joystick movement - modifying ```matrixBrightness``` value (1 - 16); changing the brightness of the LED matrix with this value; saving this value in EEPROM; diplaying the value on the screen; exiting to the main menu when joystick button is pressed
  
+```displayAbout()``` - this function is used for displaying the About sub-category; a new animation is lit on the LED matrix, moving the joystick on the Oy axis is scrolling through the About information; exiting to the main menu when the joystick button is pressed
+  - Case 0 - Game name 
+  - Case 1 - Author name
+  - Case 2 - Github link
