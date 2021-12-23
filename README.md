@@ -81,19 +81,19 @@ The thought behind the code architecture was to have a division in modules. That
 
 ```displayMenu(int menu)``` - this function contains a switch-case block that helps the display of the right text of the menu option, before selecting a sub-category
 
-```writeStringToEEPROM(int addrOffset, const String &strToWrite)``` - 
+```writeStringToEEPROM(int addrOffset, const String &strToWrite)``` - this function frees the space of the address and saves a new string in that place
 
-```readStringFromEEPROM(int addrOffset)``` - 
+```readStringFromEEPROM(int addrOffset)``` - this function reads the string saved at the address
 
 ```setDifficultyLevel(int startingDifficultyValue)``` - this function changes the speed at which the tetris pieces fall and the amount of points won by the player when he completes a full line, all of these depending on the difficulting level that was set in the Settings menu
 
-```changeLCD(bool changed)``` - 
+```changeLCD(bool changed)``` - this function is called to clear the LCD screen when the ```changed``` variable is True
 
 ```displayHighscore()``` - this function is used for displaying the Highscore sub-category; a new animation is lit on the LED matrix, the names and scored for top 3 are read from EEPROM and displayed; the joystick scroll is made on Oy axis; when we want to go back to the main menu, we push the joystick button
 
 ```displaySettings()``` - this function is used for displaying the Settings sub-category 
   - a new animation is lit on the LED matrix
-  - moving the joystick on the Oy axis is scrolling through the Settings option, that are displayed in a switch case
+  - moving the joystick on the Oy axis is scrolling through the Settings option, that are displayed in a switch case block
   - before displaying the selected option in Settings, the current name of the player is read from EEPROM and edited to leave out any weird characters
     - Case 0 - Show name - displaying current player name; exiting to the main menu when joystick button is pressed
     - Case 1 - Edit name - displaying current player name and editing it; Oy joystick movement - scrolling through the name characters left or right; Ox joystick movement - scrolling through the alphabet characters up or down (A-Z), exiting to the main menu when joystick button is pressed
@@ -106,3 +106,22 @@ The thought behind the code architecture was to have a division in modules. That
   - Case 0 - Game name 
   - Case 1 - Author name
   - Case 2 - Github link
+
+```displayGame()``` - this function is used for displaying the Game sub-category; top 3 scores and names are read from EEPROM before the start of the game; no. of lives, score and difficulty level are written on the LCD; the game starts when we call the function ```matrixGame()``` that returns the value of the new score; this value is compared with the top 3 scores and included in the ranking if it is the case
+
+```loseLife()``` - this function is called when the player loses a life in the game; no. of lives is decreased, the position of the piece is the initial one in the center of the first line, a specific tone is played by the buzzer and on the matrix is drawn a big X symbol
+
+```winPoints()``` - this function is used to display the values of no. of lives, score and difficulty after a new score has been calculated
+
+```randomizePiece()``` - this function returns a random number that will represent the piece that will fall next in the game
+
+```erasePiece(int prevX, int prevY, String piece[3])``` - this function is used to erase the previous position of the piece
+
+```showPiece(int posX, int posY, String piece[3])``` - this function is used to display the current position of the piece
+
+```rotatePiece(int posX, int posY, String piece[3])``` - this function is used to rotate the piece counter clockwise
+
+```assignMatrix()``` - this function is used to assign the piece to the matrix of values that is used later to calculate the scores and limits
+
+```limitLeft()```, ```limitCenter()```, ```limitRight()``` - these functions calculate the lowest point in the left column, center column and also the right column of the piece; this limits help us determine when the piece has hit the bottom or another piece 
+
