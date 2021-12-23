@@ -66,3 +66,13 @@ Menu Options:
 ## Demo
 
 Here you can see the [demo](https://drive.google.com/file/d/1FP7AEnCBzxuFjnsAiDPh-IIQVWkuzQiu/view?usp=drivesdk) .
+
+## About the code
+
+The thought behind the code architecture was to have a division in modules. That's why ```setup()``` and ```loop()``` are short functions.
+
+```setup()``` - pinMode declaration and initializing of the contrast and brightness values, and also initializing the game before playing
+
+```loop()``` - the first thing that is displayed is the start-up message, after which we can select the menu option (calling the menu-displaying function and using a variable called ```selected```)
+
+```updateJoystick()``` - this function is updating the ```option``` value when scrolling through the menu, ```option``` has values between 0 and 3
