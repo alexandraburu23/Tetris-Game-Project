@@ -85,8 +85,20 @@ The thought behind the code architecture was to have a division in modules. That
 
 ```readStringFromEEPROM(int addrOffset)``` - 
 
-```setDifficulty (int startingDifficultyValue)``` - 
+```setDifficultyLevel(int startingDifficultyValue)``` - this function changes the speed at which the tetris pieces fall and the amount of points won by the player when he completes a full line, all of these depending on the difficulting level that was set in the Settings menu
 
 ```changeLCD(bool changed)``` - 
 
-```displayHighscore()``` - this function is for displaying the Highscore sub-category; a new animation is lit on the LED matrix, the names and scored for top 3 are read from EEPROM and displayed; the joystick scroll is made on Oy axis; when we want to go back to the main menu, we push the joystick button
+```displayHighscore()``` - this function is used for displaying the Highscore sub-category; a new animation is lit on the LED matrix, the names and scored for top 3 are read from EEPROM and displayed; the joystick scroll is made on Oy axis; when we want to go back to the main menu, we push the joystick button
+
+```displaySettings()``` - this function is used for displaying the Settings sub-category 
+  - a new animation is lit on the LED matrix
+  - moving the joystick on the Oy axis is scrolling through the Settings option, that are displayed in a switch case
+  - before displaying the selected option in Settings, the current name of the player is read from EEPROM and edited to leave out any weird characters
+  - Case 0 - Show name - displaying current player name; exiting to the main menu when joystick button is pressed
+  - Case 1 - Edit name - displaying current player name and editing it; Oy joystick movement - scrolling through the name characters left or right; Ox joystick movement - scrolling through the alphabet characters up or down (A-Z), exiting to the main menu when joystick button is pressed
+  - Case 2 - Set difficulty level - Oy joystick movement - modifying the ```startingDifficultyLevel``` with values between 1 and 5; calling the ```setDifficultyLevel``` function to make the game changes; exiting to the main menu when joystick button is pressed
+  - Case 3 - Set LCD bright - Oy joystick movement - modifying ```LCDBrightness``` value (0 - 255); changing the brightness of the LCD with this value; saving this value in EEPROM; diplaying the value on the screen; exiting to the main menu when joystick button is pressed
+  - Case 4 - Set LCD contrast - Oy joystick movement - modifying ```LCDContrast``` value (0 - 255); changing the contrast of the LCD with this value; saving this value in EEPROM; diplaying the value on the screen; exiting to the main menu when joystick button is pressed
+  - Case 5 - Set matrix light - Oy joystick movement - modifying ```matrixBrightness``` value (1 - 16); changing the brightness of the LED matrix with this value; saving this value in EEPROM; diplaying the value on the screen; exiting to the main menu when joystick button is pressed
+ 
